@@ -1170,6 +1170,181 @@ func main() {
 
 ---
 
+
+
+
+## 14. Loops (`for`) and `range`
+
+### Definition
+Go has only one loop keyword: `for`. It can be used in multiple forms like traditional loops, condition-based loops, and infinite loops. Go also provides `range` for iterating over collections such as arrays, slices, strings, and maps.
+
+---
+
+### 14a. Classic `for` Loop
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    for i := 0; i < 5; i++ {
+        fmt.Println("Count:", i)
+    }
+}
+
+
+
+### 14b. Condition-Based Loop (While-style)
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    count := 0
+
+    for count < 3 {
+        fmt.Println(count)
+        count++
+    }
+}
+```
+
+### 14c. Infinite Loop 
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    i := 0
+
+    for {
+        fmt.Println(i)
+        i++
+
+        if i == 3 {
+            break
+        }
+    }
+}
+```
+
+---
+
+### 14d. range
+
+**Definition**
+range is used to iterate over collections and returns index/key and value.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    nums := []int{10, 20, 30}
+
+    for index, value := range nums {
+        fmt.Println(index, value)
+    }
+}
+```
+Ignoring Index or Value
+```go
+for _, value := range nums {
+    fmt.Println(value)
+}
+
+```
+### Range with String
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    name := "Go"
+
+    for i, ch := range name {
+        fmt.Println(i, string(ch))
+    }
+}
+```
+
+## 15. Maps
+
+**Definition**
+
+A map is an unordered collection of key-value pairs. Each key is unique and maps to a specific value.
+
+
+### 15a. Creating a Map
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    student := map[string]int{
+        "Arpan": 22,
+        "Rahim": 25,
+    }
+
+    fmt.Println(student)
+}
+```
+
+### 15b. Using make
+```go
+
+student := make(map[string]int)
+
+student["Arpan"] = 22
+student["Rahim"] = 25
+
+```
+
+### 15c. Accessing Values  
+```go
+
+fmt.Println(student["Arpan"])
+
+``` 
+
+### 15d. Updating Values
+```go
+student["Arpan"] = 23
+fmt.Println(student["Arpan"])
+```
+### 15e. Checking Key Existence (comma-ok idiom)
+```go
+age, exists := student["Arpan"]
+
+fmt.Println(age)
+fmt.Println(exists)
+```
+
+### 15f. Deleting a Key
+
+```go
+delete(student, "Arpan")
+
+```
+
+### 15g. Iterating Over a Map
+```go
+for key, value := range student {
+    fmt.Println(key, value)
+}
+```
+
+
 ## Things to Remember
 
 | Topic | Key Rule |
